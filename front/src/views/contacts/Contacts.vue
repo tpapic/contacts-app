@@ -5,6 +5,7 @@
         <b-nav>
           <b-nav-item @click="allContacts()" active>All contacts</b-nav-item>
           <b-nav-item @click="myFavorites()">My favorites</b-nav-item>
+          <b-nav-item @click="logout()">Logout</b-nav-item>
         </b-nav>
       </b-row>
       <main class="main">
@@ -121,6 +122,11 @@ export default {
 
     viewContact(id) {
       this.$router.push({ name: 'ContactEdit', params: {contactId: id} })
+    },
+
+    logout() {
+      this.$store.dispatch('logout')
+      this.$router.go('/login')
     }
   }
 }
