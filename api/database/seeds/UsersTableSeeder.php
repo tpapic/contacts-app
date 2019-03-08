@@ -16,13 +16,6 @@ class UsersTableSeeder extends Seeder
     {
         $users = [
             [
-                'email' => 'admin@gmail.com',
-                'first_name' => 'John',
-                'last_name' => 'Doe',
-                'role_id' => 1,
-                'gender_id' => 1
-            ],
-            [
                 'email' => 'user@gmail.com',
                 'first_name' => 'Tom',
                 'last_name' => 'Tomic',

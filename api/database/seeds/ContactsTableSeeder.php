@@ -27,12 +27,48 @@ class ContactsTableSeeder extends Seeder
             'profile_photo' => 'no_image.png',
             'email' => 'john@gmail.com',
             'favorite' => false,
+            'user_id' => 1
+          ],
+          [
+            'first_name' => 'Iva',
+            'last_name' => 'Ivic',
+            'profile_photo' => 'no_image.png',
+            'email' => 'iva@gmail.com',
+            'favorite' => true,
+            'user_id' => 2
+          ],
+          [
+            'first_name' => 'Luka',
+            'last_name' => 'Lukic',
+            'profile_photo' => 'no_image.png',
+            'email' => 'luka@gmail.com',
+            'favorite' => false,
             'user_id' => 2
           ]
         ];
 
-    foreach ($contacts as $contact) {
-      Contact::create($contact);
-    }
+      $numbers = [
+        [
+          ['label' => 'Phone', 'number' => '222222'],
+          ['label' => 'Mob', 'number' => '333333']
+        ],
+        [
+          ['label' => 'Phone', 'number' => '123456'],
+          ['label' => 'Mob', 'number' => '123456789']
+        ],
+        [
+          ['label' => 'Phone', 'number' => '1111111'],
+          ['label' => 'Mob', 'number' => '4444444']
+        ],
+        [
+          ['label' => 'Phone', 'number' => '55555555'],
+          ['label' => 'Mob', 'number' => '66666666']
+        ]
+      ];
+
+      for ($i = 0; $i < count($contacts); $i++) {
+        $contactCreated = Contact::create($contacts[$i]);
+        $contactCreated->numbers()->createMany($numbers[$i]);
+      }
     }
 }
