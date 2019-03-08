@@ -16,10 +16,11 @@ class CreateNumbersTable extends Migration
         Schema::create('numbers', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label');
-            $table->string('number')->unique();
+            $table->string('number');
             $table->integer('contact_id')->unsigned();
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['number', 'contact_id']);
         });
     }
 
