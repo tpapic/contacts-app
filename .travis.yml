@@ -19,7 +19,7 @@ before_script:
 
 before_install:
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('secret') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade -u root -pnew_password
+  - sudo mysql_upgrade -u root -p secret
   - sudo service mysql restart
   - mysql -e 'SHOW VARIABLES LIKE "%version%";'
   - mysql -e 'CREATE DATABASE homestead_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
