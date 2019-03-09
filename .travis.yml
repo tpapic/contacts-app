@@ -16,7 +16,7 @@ before_script:
   - php artisan migrate
 
 before_install:
-  - mysql -e 'CREATE DATABASE homestead_test;'
+  - mysql -e 'CREATE DATABASE homestead_test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
 
 script:
   - ./vendor/bin/phpunit --coverage-text
