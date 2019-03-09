@@ -27,13 +27,8 @@ before_install:
 script:
   - ./vendor/bin/phpunit --coverage-text
 
-addons:
-  apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
-      - mysql-client
+services:
+  - mysql
 
 
 notifications:
