@@ -65,6 +65,12 @@
             </div>
           </b-row>
 
+          <b-row class="justify-content-md-center">
+            <ul>
+              <li v-for="(error, index) in errors" :key="index">{{ error[0] }}</li>
+            </ul>
+          </b-row>
+
         </div>
       </main>
     </div>
@@ -74,6 +80,7 @@
 export default {
   data () {
     return {
+      errors: [],
       disabledInputs: true,
       contact: {
         id: this.$route.params.contactId,
@@ -117,7 +124,12 @@ export default {
         .put('/contacts/' + this.contact.id, this.contact)
         .then(response => {
           console.log(response.data)
-          // alert("Success");
+          if(response.data.success === false) {
+            this.errors = response.data.errors
+          } else {
+            this.errors = []
+            //alert("Success");
+          }
         })
         .catch((error) => {
           console.log(error)

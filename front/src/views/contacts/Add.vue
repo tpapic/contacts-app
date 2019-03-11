@@ -63,6 +63,12 @@
             </div>
           </b-row>
 
+          <b-row class="justify-content-md-center">
+            <ul>
+              <li v-for="(error, index) in errors" :key="index">{{ error[0] }}</li>
+            </ul>
+          </b-row>
+
         </div>
       </main>
     </div>
@@ -72,13 +78,14 @@
 export default {
   data () {
     return {
+      errors: [],
       contact: {
         first_name: null,
         last_name: null,
         email: null,
         numbers: [
           { label: '', number: ''}
-        ]
+        ],
       },
     }
   },
@@ -97,7 +104,12 @@ export default {
         .post('/contacts', this.contact)
         .then(response => {
           console.log(response.data)
-          alert("Success");
+          if(response.data.success === false) {
+            this.errors = response.data.errors
+          } else {
+            this.errors = []
+            alert("Success");
+          }
         })
         .catch((error) => {
           console.log(error)
