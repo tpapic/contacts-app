@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/tpapic/contacts-app.svg?branch=master)](https://travis-ci.org/tpapic/contacts-app)
+
 # contacts-app
 
 Laravel api
